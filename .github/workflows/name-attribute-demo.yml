@@ -1,0 +1,19 @@
+name: Display Name Demo
+
+# The 'name' keyword appears in the "Actions" tab of the GitHub repository.
+# If omitted, GitHub sets the name to the file path relative to the repository root.
+
+on: workflow_dispatch
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Workflow Name
+        run: echo "This workflow is named 'Display Name Demo'"
+      
+      - name: Access via Context
+        run: echo "Workflow Name from Context: ${{ github.workflow }}"
+
+      - name: Access via Env Var
+        run: echo "Workflow Name from Env: $GITHUB_WORKFLOW"
