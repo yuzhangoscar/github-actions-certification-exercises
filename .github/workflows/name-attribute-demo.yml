@@ -13,7 +13,9 @@ jobs:
         run: echo "This workflow is named 'Display Name Demo'"
       
       - name: Access via Context
-        run: echo "Workflow Name from Context: ${{ github.workflow }}"
+        env:
+          WF_NAME: ${{ github.workflow }}
+        run: echo "Workflow Name from Context: $WF_NAME"
 
       - name: Access via Env Var
         run: echo "Workflow Name from Env: $GITHUB_WORKFLOW"
