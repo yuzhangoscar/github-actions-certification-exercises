@@ -1,4 +1,4 @@
-name: Display Name Demo
+name: Name Demo
 
 # The 'name' keyword appears in the "Actions" tab of the GitHub repository.
 # If omitted, GitHub sets the name to the file path relative to the repository root.
