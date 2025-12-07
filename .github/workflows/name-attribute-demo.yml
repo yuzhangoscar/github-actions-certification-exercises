@@ -12,4 +12,4 @@ jobs:
       - name: Print Workflow Name
         run: |
           echo "This workflow is named 'Display Name Demo'"
-          echo "This workflow is named $GITHUB_WORKFLOW"
+          echo "This workflow is named $GITHUB_WORKFLOW" && echo "This workflow is named ${{ github.workflow }}"
