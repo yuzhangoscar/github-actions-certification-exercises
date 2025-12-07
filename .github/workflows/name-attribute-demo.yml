@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Workflow Name
-        run: echo "This workflow is named 'Display Name Demo'"
-
-      - name: Access via Env Var
-        run: echo "Workflow Name from Env: $GITHUB_WORKFLOW"
+        run: |
+          echo "This workflow is named 'Display Name Demo'"
+          echo "This workflow is named $GITHUB_WORKFLOW"
