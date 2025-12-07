@@ -1,0 +1,22 @@
+name: On Attribute Demo
+
+on: 
+  push: 
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 9 * * 1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print run information
+        run: |
+          echo "Run Name: ${{ github.workflow }}" && echo "Triggered by: ${{ github.event_name }}"
