@@ -4,10 +4,11 @@ This document describes the top-level keywords available in a GitHub Actions wor
 
 ## `name`
 The name of your workflow. GitHub displays the names of your workflows on your repository's "Actions" tab.
+### Example: .github/workflows/name-attribute-demo.yml
 
 ## `run-name`
 The name for workflow runs generated from the workflow. GitHub displays the workflow run name in the list of workflow runs on your repository's "Actions" tab.
-### Example: .github/workflows/name-attribute-demo.yml
+### Example: .github/workflows/run-name-attribute-demo.yml
 
 ## `on`
 To automatically trigger a workflow, use `on` to define which events can cause the workflow to run.
