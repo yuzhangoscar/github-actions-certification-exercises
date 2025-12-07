@@ -1,3 +1,6 @@
+# there is a known issue ${{ github.run_name }} is not available in the programmatic way, therefore the following line only shows Run Name: 
+# should we need to access run-name in the programmatic way, we will have to re-construct it manually, for example
+# "echo Run Name: Run Name Demo by@${{ github.actor }} No${{ github.run_number }}"
 name: Run Name Demo
 
 run-name: "Run Name Demo by@${{ github.actor }} No${{ github.run_number }}"
@@ -9,11 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
       - name: Print run information
         run: |
-        # there is a known issue ${{ github.run_name }} is not available in the programmatic way, therefore the following line only shows Run Name: 
-        # should we need to access run-name in the programmatic way, we will have to re-construct it manually, for example
-        # "echo Run Name: Run Name Demo by@${{ github.actor }} No${{ github.run_number }}"
           echo "Run Name: ${{ github.run_name }}" 
           echo "Run Name: Run Name Demo by@${{ github.actor }} No${{ github.run_number }}"
