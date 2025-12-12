@@ -13,3 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+  will-fail:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: none  # No issue permissions
+    steps:
+      - name: Try to create an issue (WILL FAIL)
+        run: |
+          gh issue create \
+            --title "Test Issue" \
+            --body "This is a test issue"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
