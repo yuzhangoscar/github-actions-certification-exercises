@@ -12,9 +12,11 @@ The name for workflow runs generated from the workflow. GitHub displays the work
 
 ## `on`
 To automatically trigger a workflow, use `on` to define which events can cause the workflow to run.
+### Example: .github/workflows/on-attribute-demo.yml
 
 ## `permissions`
 You can use `permissions` to modify the default permissions granted to the `GITHUB_TOKEN`, adding or removing access as required.
+### Example: .github/workflows/permissions-attribute-demo.yml
 
 ## `env`
 A map of variables that are available to the steps of all jobs in the workflow.
