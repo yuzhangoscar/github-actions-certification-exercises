@@ -1,0 +1,36 @@
+name: Env Attribute Demo
+
+run-name: "Env Attribute Demo by@${{ github.actor }} No${{ github.run_number }}"
+
+on:
+  workflow_dispatch:
+
+env:
+  WORKFLOW_ENV_VAR: "env for the entire workflow file"
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    env:
+      JOB_ENV_VAR: "env for the job"
+    steps:
+      - name: Print environment variable
+        env:
+          STEP_ENV_VAR: "env for the step"
+        run: |
+          echo "WORKFLOW_ENV_VAR: $WORKFLOW_ENV_VAR"
+          echo "WORKFLOW_ENV_VAR: ${{ env.WORKFLOW_ENV_VAR }}"
+          echo "JOB_ENV_VAR: $JOB_ENV_VAR"
+          echo "JOB_ENV_VAR: ${{ env.JOB_ENV_VAR }}"
+          echo "STEP_ENV_VAR: $STEP_ENV_VAR"
+          echo "STEP_ENV_VAR: ${{ env.STEP_ENV_VAR }}"
+
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment variable
+        run: |
+          echo "WORKFLOW_ENV_VAR: $WORKFLOW_ENV_VAR"
+          echo "WORKFLOW_ENV_VAR: ${{ env.WORKFLOW_ENV_VAR }}"
+          echo "But I cannot see JOB_ENV_VAR: $JOB_ENV_VAR"
+          echo "But I cannot see STEP_ENV_VAR: $STEP_ENV_VAR either"
