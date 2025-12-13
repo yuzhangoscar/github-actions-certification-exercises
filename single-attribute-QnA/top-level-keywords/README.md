@@ -20,6 +20,7 @@ You can use `permissions` to modify the default permissions granted to the `GITH
 
 ## `env`
 A map of variables that are available to the steps of all jobs in the workflow.
+### Example: .github/workflows/env-attribute-demo.yml
 
 ## `defaults`
 Use `defaults` to create a map of default settings that will apply to all jobs in the workflow.
