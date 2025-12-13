@@ -1,0 +1,94 @@
+name: defaults attribute demo
+
+on: workflow_dispatch
+
+jobs:
+  # Job 1: Bash in ./backend
+  backend:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./backend
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup directories
+        shell: bash
+        working-directory: ./
+        run: mkdir -p backend frontend
+      
+      - name: Show shell and directory
+        run: |
+          echo "Shell: $SHELL"
+          echo "Directory: $(pwd)"
+          echo "Shell type: bash"
+      
+      - name: Create backend file
+        run: |
+          echo "backend code" > app.js
+          ls -la
+          pwd
+  
+  # Job 2: PowerShell in ./frontend
+  frontend:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: ./frontend
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup directories
+        shell: bash
+        working-directory: ./
+        run: mkdir -p backend frontend
+      
+      - name: Show shell and directory
+        run: |
+          Write-Host "Shell: PowerShell Core"
+          Write-Host "Directory: $(Get-Location)"
+          Write-Host "Version: $($PSVersionTable.PSVersion)"
+      
+      - name: Create frontend file
+        run: |
+          "frontend code" | Out-File index.html
+          Get-ChildItem
+          Get-Location
+  
+  # Job 3: Python in ./scripts
+  scripts:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        shell: python
+        working-directory: ./scripts
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup directories
+        shell: bash
+        working-directory: ./
+        run: mkdir -p scripts
+      
+      - name: Show shell and directory
+        run: |
+          import os
+          import sys
+          print(f"Shell: Python {sys.version}")
+          print(f"Directory: {os.getcwd()}")
+      
+      - name: Create script file
+        run: |
+          import os
+          with open('deploy.py', 'w') as f:
+              f.write('print("deploy script")')
+          print(f"Files: {os.listdir()}")
+          print(f"CWD: {os.getcwd()}")
