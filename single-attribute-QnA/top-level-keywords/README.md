@@ -24,6 +24,7 @@ A map of variables that are available to the steps of all jobs in the workflow.
 
 ## `defaults`
 Use `defaults` to create a map of default settings that will apply to all jobs in the workflow.
+### Example: .github/workflows/defaults-attribute-demo.yml
 
 ## `concurrency`
 Use `concurrency` to ensure that only a single job or workflow using the same concurrency group will run at a time.
