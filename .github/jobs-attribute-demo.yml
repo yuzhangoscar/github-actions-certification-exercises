@@ -1,0 +1,28 @@
+name: jobs attribute demo
+
+on: [push]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Job 1 starting at $(date)"
+          sleep 10
+          echo "Job 1 finished at $(date)"
+  
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Job 2 starting at $(date)"
+          sleep 10
+          echo "Job 2 finished at $(date)"
+  
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Job 3 starting at $(date)"
+          sleep 10
+          echo "Job 3 finished at $(date)"
