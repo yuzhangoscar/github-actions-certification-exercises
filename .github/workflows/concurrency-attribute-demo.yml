@@ -1,0 +1,23 @@
+name: Concurrency Attribute Demo
+run-name: Concurrency Demo for ${{ github.ref_name }}
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  long-running-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate work
+        run: |
+          echo "Starting a long process in group: ${{ github.workflow }}-${{ github.ref }}"
+          echo "If you trigger this workflow again while I am running, I will be cancelled!"
+          sleep 60
+          echo "Finished work!"

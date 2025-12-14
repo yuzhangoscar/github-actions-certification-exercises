@@ -28,6 +28,8 @@ Use `defaults` to create a map of default settings that will apply to all jobs i
 
 ## `concurrency`
 Use `concurrency` to ensure that only a single job or workflow using the same concurrency group will run at a time.
+### Example: .github/workflows/concurrency-attribute-demo.yml
 
 ## `jobs`
 A workflow run is made up of one or more `jobs` that can run sequentially or in parallel.
+### Example: .github/workflows/jobs-attribute-demo.yml
