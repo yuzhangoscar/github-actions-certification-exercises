@@ -18,7 +18,6 @@ outputs:
 
 runs:
   using: 'composite'
-  id: 'deployment' #id attribute is a must-have as we need to reference steps.deployment.outputs.success
   steps: 
     - name: 'Simulate deployment'
       id: deployment
