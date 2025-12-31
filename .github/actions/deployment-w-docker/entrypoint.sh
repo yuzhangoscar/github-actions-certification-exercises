@@ -26,4 +26,4 @@ echo "   ✅ Deployment complete!"
 echo ""
 
 # Set outputs for GitHub Actions
-echo "::set-output name=deployed-version::$VERSION"
+echo "deployed-version=$VERSION" >> $GITHUB_OUTPUT
