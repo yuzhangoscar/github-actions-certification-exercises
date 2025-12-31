@@ -1,0 +1,37 @@
+name: 'deployment without docker'
+description: 'deploy a mockery app without docker'
+author: 'Yu Zhang'
+
+inputs:
+  env:
+    description: 'environment to deploy to'
+    required: true
+
+  version:
+    description: 'version of the app to deploy'
+    required: true
+
+outputs:
+  success:
+    description: 'deployment success or not'
+    value: ${{ steps.deployment.outputs.success }}
+
+runs:
+  using: 'composite'
+  id: 'deployment' #id attribute is a must-have as we need to reference steps.deployment.outputs.success
+  steps: 
+    - name: 'Simulate deployment'
+      id: deployment
+      shell: bash
+      run: |
+        echo "env: ${{ inputs.env }}"
+        echo "version: ${{ inputs.version }}"
+        
+        # Generate random boolean (50/50 chance)
+        if [ $((RANDOM % 2)) -eq 0 ]; then
+          echo "success=true" >> $GITHUB_OUTPUT
+          echo "✅ Deployment succeeded!"
+        else
+          echo "success=false" >> $GITHUB_OUTPUT
+          echo "❌ Deployment failed!"
+        fi

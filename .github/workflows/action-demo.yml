@@ -1,0 +1,20 @@
+name: action-demo.yml file Demo
+
+on: workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: checkout
+        run: echo 'successfully ran checkout action'
+
+      - uses: ./.github/actions/deployment-wo-docker
+        id: deployment
+        with: 
+            env: 'staging'
+            version: '1.0.0'
+
+      - name: log deployment outcome
+        run: echo '${{ steps.deployment.outputs.success == 'true' && 'Deployment was successful!' || 'Deployment failed!' }}'
