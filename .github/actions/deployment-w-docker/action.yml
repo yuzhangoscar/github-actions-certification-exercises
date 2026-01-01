@@ -1,0 +1,18 @@
+name: 'Docker Deployment Mock'
+description: 'Mock deployment using Docker container'
+author: 'Yu Zhang'
+
+inputs:
+  version:
+    description: 'Version to deploy'
+    required: true
+
+outputs:
+  deployed-version:
+    description: 'Version of the app that was deployed'
+
+runs:
+  using: 'docker'
+  image: 'DOCKERFILE'
+  args:
+    - ${{ inputs.version }}
