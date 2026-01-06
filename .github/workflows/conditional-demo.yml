@@ -1,0 +1,11 @@
+name: conditional demo
+
+on: [ push ]
+
+jobs:
+  conditional-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: conditional demo
+        if: github.ref == 'refs/heads/main'
+        run: echo "if you see this log message, it comes from the main branch"
